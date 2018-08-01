@@ -10,7 +10,7 @@ class UserController < ApplicationController
     poney.bio = params[:bio]
     poney.save
     @name = params[:username]
-    @poney_page = poney.id
+    @poney_page = poney.username
     if poney.valid?
       render 'create'
     else
@@ -19,11 +19,9 @@ class UserController < ApplicationController
   end
 
   def show
-   puts '-----------------------------------------'
-   puts the_poney = User.find_by(username: params[:username])
+    the_poney = User.find_by(username: params[:username])
    @username = the_poney.username
    @bio = the_poney.bio
-   puts '-----------------------------------------'
   end
 
   def error
